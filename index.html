@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Children's TV 2004-2024 Quiz</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&display=swap">
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: 'Baloo 2', sans-serif;
+            background-color: #38B6FF; /* Background color */
+            color: black;
+            flex-direction: column;
+            margin: 0;
+        }
+
+        #yellow-box {
+            width: 300px;
+            height: 300px;
+            background-color: #FED405; /* Yellow color */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            cursor: pointer;
+            color: black;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-align: center;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow */
+            border: 5px solid black; /* Black edging */
+            transition: transform 0.1s ease-in-out;
+        }
+
+        #question-answer {
+            margin-top: 20px;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        /* Keyframes for the bounce animation */
+        @keyframes bounce {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+        }
+
+        /* Class to trigger the bounce animation */
+        .animate-bounce {
+            animation: bounce 0.3s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="yellow-box">CHILDREN'S TV 2004-2024</div>
+
+    <div id="question-answer"></div>
+
+    <script>
+        const yellowBox = document.getElementById("yellow-box");
+        const questionAnswerDiv = document.getElementById("question-answer");
+
+        // Array of questions and answers about Children's TV from 2004-2024
+        const tvQuestions = [
+            { question: "What is the name of the blue dog in 'Blue's Clues'?", answer: "Blue" },
+            { question: "Which show features a magical school called Hogwarts?", answer: "Harry Potter" },
+            { question: "In 'Peppa Pig', what type of animal is Peppa?", answer: "Pig" },
+            { question: "Which animated series features a boy named Finn and his best friend Jake?", answer: "Adventure Time" },
+            { question: "What is the name of the green superhero in 'Teen Titans Go!'?", answer: "Beast Boy" },
+            { question: "In 'My Little Pony', what is the name of the purple unicorn?", answer: "Twilight Sparkle" },
+            { question: "What is the name of the squirrel who is friends with SpongeBob SquarePants?", answer: "Sandy Cheeks" },
+            { question: "Which show follows the adventures of a talking blue engine named Thomas?", answer: "Thomas the Tank Engine" },
+            { question: "What is the name of the character who loves to eat jelly in 'The Adventures of Paddington'?", answer: "Paddington Bear" },
+            { question: "In 'Miraculous Ladybug', what is the superhero name of Marinette Dupain-Cheng?", answer: "Ladybug" },
+            { question: "Which animated series features a young girl who can talk to animals and live on a farm?", answer: "Spirit Riding Free" },
+            { question: "What is the name of the robot dog in 'Robocar Poli'?", answer: "Poli" },
+            { question: "In 'The Amazing World of Gumball', what is Gumball's last name?", answer: "Watterson" },
+            { question: "Which show features a bear named Boo-Boo and his friend Yogi?", answer: "Yogi Bear" },
+            { question: "What is the name of the red dog in 'Clifford the Big Red Dog'?", answer: "Clifford" },
+            { question: "In 'Paw Patrol', what is the name of the youngest pup?", answer: "Rubble" },
+            { question: "Which show features a young boy who becomes a superhero by using the power of the stars?", answer: "Star Wars Rebels" },
+            { question: "What is the name of the little yellow creatures in 'Despicable Me'?", answer: "Minions" },
+            { question: "Which show features a family of superheroes known as the Incredibles?", answer: "The Incredibles" },
+            { question: "In 'Masha and the Bear', what is the bear's name?", answer: "Bear" },
+            { question: "What is the name of the character who hosts 'Sesame Street'?", answer: "Big Bird" },
+            { question: "Which show follows a group of animated children who live in a town called Townsville?", answer: "The Powerpuff Girls" },
+            { question: "What is the name of the character who lives in a pineapple under the sea?", answer: "SpongeBob SquarePants" },
+            { question: "In 'Dora the Explorer', what is the name of Dora's monkey friend?", answer: "Boots" },
+            { question: "Which show features a group of anthropomorphic animals who work as a team to solve mysteries?", answer: "Scooby-Doo" },
+            { question: "What is the name of the main character in 'Arthur'?", answer: "Arthur Read" },
+            { question: "In 'Peppa Pig', who is Peppa's little brother?", answer: "George" },
+            { question: "Which show features a young witch named Sabrina?", answer: "Sabrina the Teenage Witch" },
+            { question: "What is the name of the yellow and blue character who is a good friend of Barney?", answer: "Baby Bop" },
+            { question: "In 'Teletubbies', what is the name of the red Teletubby?", answer: "Tinky Winky" },
+            { question: "Which show features a group of children who travel in a magical bus?", answer: "The Magic School Bus" },
+            { question: "What is the name of the talking dog in 'Blue's Clues'?", answer: "Blue" },
+            { question: "In 'Wild Kratts', what are the names of the two main characters?", answer: "Chris and Martin Kratt" },
+            { question: "What is the name of the character who lives in a house made of candy in 'Hansel and Gretel'?", answer: "Witch" },
+            { question: "Which animated series features a group of children who help their town with magical powers?", answer: "The Fairly OddParents" },
+            { question: "What is the name of the flying superhero in 'Super Why!'?", answer: "Super Why" },
+            { question: "In 'Sesame Street', what is the name of the character who lives in a trash can?", answer: "Oscar the Grouch" },
+            { question: "Which show features a group of animals who live on a farm and solve mysteries?", answer: "Olivia" },
+            { question: "What is the name of the character who lives in a big blue house?", answer: "Blue" },
+            { question: "In 'Curious George', what is George's favorite thing to do?", answer: "Curiosity" },
+            { question: "Which show features a group of magical fairies who live in a magical land?", answer: "Winx Club" },
+            { question: "What is the name of the character who hosts 'The Wiggles'?", answer: "The Wiggles" },
+            { question: "In 'Mickey Mouse Clubhouse', what is the name of Mickey's dog?", answer: "Pluto" },
+            { question: "Which show features a group of talking animals who solve problems in their town?", answer: "Postman Pat" },
+            { question: "What is the name of the robot in 'Big Hero 6'?", answer: "Baymax" },
+            { question: "In 'Octonauts', what is the name of the leader of the team?", answer: "Captain Barnacles" },
+            { question: "Which show features a group of young heroes who fight villains and monsters?", answer: "Teen Titans Go!" },
+            { question: "What is the name of the character who loves to play with blocks in 'Bob the Builder'?", answer: "Bob" },
+            { question: "In 'Puffin Rock', what is the name of the young puffin?", answer: "Oona" }
+        ];
+
+        let shuffledQuestions = [];
+        let questionIndex = 0;
+
+        // Shuffle the questions array
+        function shuffleArray(array) {
+            let currentIndex = array.length, randomIndex;
+            while (currentIndex !== 0) {
+                randomIndex = Math.floor(Math.random() * currentIndex);
+                currentIndex--;
+                [array[currentIndex], array[randomIndex]] = [array[randomIndex], array[currentIndex]];
+            }
+            return array;
+        }
+
+        // Initialize questions
+        function initializeQuestions() {
+            shuffledQuestions = shuffleArray([...tvQuestions]);
+            questionIndex = 0;
+            displayQuestion();
+        }
+
+        // Function to display the current question
+        function displayQuestion() {
+            if (shuffledQuestions.length === 0) {
+                questionAnswerDiv.innerHTML = "<strong>No more questions!</strong>";
+                return;
+            }
+            const currentQA = shuffledQuestions[questionIndex];
+            questionAnswerDiv.innerHTML = `<strong>Question:</strong> ${currentQA.question}<br><strong>Answer:</strong> ${currentQA.answer}`;
+        }
+
+        // Animate bounce when the yellow box is clicked
+        yellowBox.addEventListener("click", () => {
+            yellowBox.classList.add("animate-bounce");
+            setTimeout(() => {
+                yellowBox.classList.remove("animate-bounce");
+            }, 300);
+            questionIndex = (questionIndex + 1) % shuffledQuestions.length;
+            displayQuestion();
+        });
+
+        // Initialize the quiz
+        initializeQuestions();
+    </script>
+
+</body>
+</html>
